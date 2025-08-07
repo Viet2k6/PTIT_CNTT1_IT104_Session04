@@ -5,7 +5,13 @@ const processInput = (input: string | number | boolean): void => {
       const numberValue = parseInt(input, 10);
       console.log(numberValue * numberValue);
     } else {
-      const letterCount = (input.match(/[a-zA-Z]/g) || []).length;
+      let letterCount = 0;
+      for (let i = 0; i < input.length; i++) {
+        const char = input[i];
+        if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
+          letterCount++;
+        }
+      }
       console.log(`${letterCount} ký tự chữ cái`);
     }
   } else if (typeof input === "number") {
@@ -13,7 +19,7 @@ const processInput = (input: string | number | boolean): void => {
       console.log("Không phải số nguyên tố");
       return;
     }
-    
+
     let isPrime = true;
     for (let i = 2; i <= Math.sqrt(input); i++) {
       if (input % i === 0) {
@@ -32,9 +38,10 @@ const processInput = (input: string | number | boolean): void => {
 };
 
 processInput("123");        
-processInput("abc123!");    
+processInput("abc123!");   
 processInput(7);            
 processInput(8);            
 processInput(true);         
-processInput(false);        
+processInput(false);       
+
 
